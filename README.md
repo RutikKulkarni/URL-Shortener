@@ -48,7 +48,7 @@ cd backend
 npm install
 ```
 
-#### **Configure MongoDB in **``
+#### **Configure MongoDB in**
 
 ```sh
 MONGO_URI=your_mongodb_connection_string
