@@ -1,4 +1,4 @@
-import ShortenForm from "@/components/ShortenForm";
+import ShortenForm from "@/components/forms/ShortenForm";
 
 export default function Home() {
   return (
