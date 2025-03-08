@@ -2,12 +2,15 @@
 import { useState } from "react";
 import { shortenUrl } from "@/utils/api";
 import { FiCopy, FiCheck } from "react-icons/fi";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 export default function ShortenForm() {
   const [longUrl, setLongUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showRenderMessage, setShowRenderMessage] = useState(false);
 
   const isValidUrl = (url: string) => {
     const pattern = /^(https?:\/\/|www\.)[^\s/$.?#].[^\s]*$/i;
@@ -27,7 +30,21 @@ export default function ShortenForm() {
     }
 
     setError("");
+    setLoading(true);
+    setShortUrl("");
+    setShowRenderMessage(false);
+
+    const timeout = setTimeout(() => {
+      setShowRenderMessage(true);
+    }, 5000);
+
+    await new Promise((resolve) => setTimeout(resolve, 10000));
+
     const url = await shortenUrl(longUrl);
+
+    clearTimeout(timeout);
+    setLoading(false);
+    setShowRenderMessage(false);
     if (url) {
       setShortUrl(url);
       setCopied(false);
@@ -65,11 +82,29 @@ export default function ShortenForm() {
       {error && <p className="text-red-400 text-sm mt-2">{error}</p>}
 
       <button
-        className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-lg transition-transform transform hover:scale-105 active:scale-95 cursor-pointer"
+        className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-lg transition-transform transform hover:scale-105 active:scale-95 flex justify-center items-center gap-2 cursor-pointer"
         onClick={handleShorten}
+        disabled={loading}
       >
-        🔗 Shorten URL
+        {loading ? (
+          <>
+            <AiOutlineLoading3Quarters className="animate-spin" />
+            Shortening...
+          </>
+        ) : (
+          "🔗 Shorten URL"
+        )}
       </button>
+
+      {/* {loading && (
+        <p className="text-white text-sm mt-3 animate-pulse">Loading...</p>
+      )} */}
+
+      {showRenderMessage && (
+        <p className="text-yellow-300 text-sm mt-2">
+          Backend is hosted on Render. It may take some time to start.
+        </p>
+      )}
 
       {shortUrl && (
         <div className="mt-4 flex items-center justify-between bg-white/10 backdrop-blur-md text-white p-3 rounded-lg shadow-md border border-white/20">

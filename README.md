@@ -2,8 +2,8 @@
 
 A simple and stylish URL shortener built using **Next.js, TypeScript, Tailwind CSS** for the frontend and **Node.js, Express, MongoDB** for the backend.
 
-- Live URL: 
-- Backend URL: 
+- Live URL:
+<!-- - Backend URL:  -->
 
 ## 🚀 Features
 
@@ -12,7 +12,6 @@ A simple and stylish URL shortener built using **Next.js, TypeScript, Tailwind C
 - Automatically increments click counts
 - Backend API built with Express and MongoDB
 - Beautiful and responsive UI with Tailwind CSS
-
 
 ## 🛠️ Tech Stack
 
@@ -31,14 +30,13 @@ A simple and stylish URL shortener built using **Next.js, TypeScript, Tailwind C
 - MongoDB (Mongoose)
 - TypeScript
 
-
 ## 📦 Installation & Setup
 
 ### **Clone the Repository**
 
 ```sh
-git clone https://github.com/your-username/url-shortener.git
-cd url-shortener
+git clone https://github.com/RutikKulkarni/URL-Shortener.git
+cd URL-Shortener
 ```
 
 ### **Backend Setup**
@@ -69,8 +67,6 @@ npm install
 npm run dev
 ```
 
-
-
 ## API Endpoints
 
 ### **Shorten URL**
@@ -99,8 +95,6 @@ npm run dev
 
 - Redirects to the original long URL.
 
-
-
 ## 🛠️ Future Enhancements
 
 - 🔗 User authentication (Sign in with Google)
@@ -108,16 +102,10 @@ npm run dev
 - 📌 Custom short URL aliases
 - 🌎 Public API access with rate limiting
 
-
-
 ## 📜 License
 
 This project is open-source under the **MIT License**.
 
-
-
 ## ✨ Contributing
 
 Pull requests are welcome! Feel free to open an issue for any bugs or suggestions.
-
-
