@@ -38,7 +38,7 @@ export default function ShortenForm() {
       setShowRenderMessage(true);
     }, 5000);
 
-    await new Promise((resolve) => setTimeout(resolve, 10000));
+    // await new Promise((resolve) => setTimeout(resolve, 10000));
 
     const url = await shortenUrl(longUrl);
 
