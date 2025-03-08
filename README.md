@@ -2,7 +2,7 @@
 
 A simple and stylish URL shortener built using **Next.js, TypeScript, Tailwind CSS** for the frontend and **Node.js, Express, MongoDB** for the backend.
 
-- Live URL:
+- Live URL: https://shorturl-orpin.vercel.app/
 <!-- - Backend URL:  -->
 
 ## 🚀 Features
