@@ -38,16 +38,27 @@ export default function ShortenForm() {
       setShowRenderMessage(true);
     }, 5000);
 
-    // await new Promise((resolve) => setTimeout(resolve, 10000));
+    try {
+      const url = await shortenUrl(longUrl);
+      clearTimeout(timeout);
+      setLoading(false);
+      setShowRenderMessage(false);
 
-    const url = await shortenUrl(longUrl);
+      if (url) {
+        setShortUrl(url);
+        setCopied(false);
+      } else {
+        setError("Failed to shorten the URL. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error shortening URL:", error);
+      clearTimeout(timeout);
+      setLoading(false);
+      setShowRenderMessage(false);
 
-    clearTimeout(timeout);
-    setLoading(false);
-    setShowRenderMessage(false);
-    if (url) {
-      setShortUrl(url);
-      setCopied(false);
+      setError(
+        "Error connecting to the server. Backend may be starting, or there may be an issue."
+      );
     }
   };
 
